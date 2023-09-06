@@ -5,19 +5,18 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @message = Message.new(message_params)
+        @message = current_user.messages.build(message_params)
         if @message.save
-            redirect_to message_path
+          redirect_to conversation_path(@message.conversation)
         else
-            @messages = Message.all 
-            render :index
+          # Handle validation errors
         end
     end
 
     private
 
     def message_params
-        params.require(:message).permit(:content)
+        params.require(:message).permit(:content, :conversation_id)
     end
 
     def require_login
