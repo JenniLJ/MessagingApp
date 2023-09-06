@@ -1,0 +1,17 @@
+<h1>Messaging App</h1>
+<%= form_with(model: @message, local: true) do |form| %>
+    <div class="field">
+      <%= form.text_area :content, placeholder: 'Enter your message...' %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Send Message', class: 'btn' %>
+    </div>
+<% end %>
+  
+<%#<div class="messages"> %>
+    <%#<% @messages.each do |message| %>%>
+      <%#<div class="message">%>
+      <%#<%= message.content %>%>
+      <%#</div>%>
+      <%#<% end %>%>
+      <%#</div>%>
